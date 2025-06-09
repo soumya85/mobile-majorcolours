@@ -76,7 +76,7 @@ export function StickyHeader({
 
       {/* Expandable Tab Selector */}
       {showTabSelector && (
-        <div className="flex items-center gap-6 px-4 py-3 bg-black border-b border-black overflow-x-auto">
+        <div className="flex items-center gap-6 px-4 py-3 bg-black border-b border-black overflow-x-auto max-w-[440px] mx-auto">
           {tabs.map((tab) => (
             <button
               key={tab}
@@ -91,7 +91,7 @@ export function StickyHeader({
 
       {/* Expandable Dressing Room */}
       {showDressingRoom && (
-        <div className="flex items-center px-4 py-3 bg-black border-b border-black">
+        <div className="flex items-center px-4 py-3 bg-black border-b border-black max-w-[440px] mx-auto">
           <button
             onClick={() => {
               onComingSoon();
