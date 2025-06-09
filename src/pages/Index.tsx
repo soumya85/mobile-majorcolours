@@ -27,10 +27,10 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black font-nunito overflow-x-hidden">
+    <div className="min-h-screen bg-black font-nunito overflow-x-hidden max-w-[440px] mx-auto">
       {/* Header - only show when not scrolled */}
       {!scrolled && (
-        <div className="fixed top-0 left-0 right-0 z-30 bg-black">
+        <div className="fixed top-0 left-0 right-0 z-30 bg-black max-w-[440px] mx-auto">
           <Header onMenuClick={() => setShowDrawer(true)} />
           <CategoryTabs activeTab={activeTab} onTabClick={handleTabClick} />
         </div>
