@@ -37,6 +37,11 @@ export function StickyHeader({
     setShowTabSelector(false);
   };
 
+  const handleMembershipClick = () => {
+    onComingSoon();
+    setShowDressingRoom(false);
+  };
+
   return (
     <div className="fixed top-0 left-0 right-0 z-40 bg-black border-b border-gray-700">
       {/* Main sticky header - show different layout based on expanded state */}
@@ -64,21 +69,18 @@ export function StickyHeader({
           ))}
         </div>
       ) : showDressingRoom ? (
-        // Expanded dressing room view - show MEMBERSHIP < DRESSING ROOM in one line
-        <div className="flex w-full max-w-[440px] mx-auto px-4 py-4 items-center h-16 gap-6">
+        // Expanded dressing room view - show MEMBERSHIP < DRESSING ROOM in one line (right aligned)
+        <div className="flex w-full max-w-[440px] mx-auto px-4 py-4 items-center h-16 justify-end gap-6">
           <button
-            onClick={() => {
-              onComingSoon();
-              setShowDressingRoom(false);
-            }}
-            className="font-nunito text-base font-medium leading-6 uppercase text-gray-600 hover:text-gray-400 transition-colors"
+            onClick={handleMembershipClick}
+            className="min-w-fit whitespace-nowrap font-nunito text-base font-medium leading-6 uppercase text-gray-600 hover:text-gray-400 transition-colors"
           >
             Membership
           </button>
 
           <button
             onClick={handleDressingRoomClick}
-            className="flex items-center gap-3 text-white hover:opacity-80 transition-opacity"
+            className="flex items-center gap-3 text-white hover:opacity-80 transition-opacity min-w-fit"
           >
             <ChevronLeft size={12} className="mt-0.5" />
             <span className="font-nunito text-base font-bold leading-[18px] uppercase">
@@ -88,7 +90,7 @@ export function StickyHeader({
             </span>
           </button>
 
-          <button className="text-white hover:opacity-80 transition-opacity ml-auto">
+          <button className="text-white hover:opacity-80 transition-opacity">
             <ShoppingCart size={15} />
           </button>
         </div>
