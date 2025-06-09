@@ -1,41 +1,71 @@
+import { useState } from "react";
+import { useScroll } from "@/hooks/use-scroll";
+import { Header } from "@/components/Header";
+import { CategoryTabs } from "@/components/CategoryTabs";
+import { StickyHeader } from "@/components/StickyHeader";
+import { HeroBanner } from "@/components/HeroBanner";
+import { ContentSection } from "@/components/ContentSection";
+import { ComingSoonModal } from "@/components/ComingSoonModal";
+import { NavigationDrawer } from "@/components/NavigationDrawer";
+
 const Index = () => {
+  const { scrolled } = useScroll(50);
+  const [activeTab, setActiveTab] = useState("LIFTING");
+  const [showComingSoon, setShowComingSoon] = useState(false);
+  const [showDrawer, setShowDrawer] = useState(false);
+
+  const handleTabClick = (tab: string) => {
+    if (tab === "LIFTING") {
+      setActiveTab(tab);
+    } else {
+      setShowComingSoon(true);
+    }
+  };
+
+  const handleComingSoon = () => {
+    setShowComingSoon(true);
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
-      <div className="text-center">
-        {/* TODO: replace everything here with the actual app! */}
-        <h1 className="text-2xl font-semibold text-slate-800 flex items-center justify-center gap-3">
-          <svg
-            className="animate-spin h-8 w-8 text-slate-400"
-            viewBox="0 0 50 50"
-          >
-            <circle
-              className="opacity-30"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-            />
-            <circle
-              className="text-slate-600"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-              strokeDasharray="100"
-              strokeDashoffset="75"
-            />
-          </svg>
-          Generating your app...
-        </h1>
-        <p className="mt-4 text-slate-600 max-w-md">
-          Watch the chat on the left for updates that might need your attention
-          to finish generating
-        </p>
+    <div className="min-h-screen bg-black font-nunito overflow-x-hidden">
+      {/* Header - only show when not scrolled */}
+      {!scrolled && (
+        <div className="fixed top-0 left-0 right-0 z-30 bg-black">
+          <Header onMenuClick={() => setShowDrawer(true)} />
+          <CategoryTabs activeTab={activeTab} onTabClick={handleTabClick} />
+        </div>
+      )}
+
+      {/* Sticky Header - only show when scrolled */}
+      {scrolled && (
+        <StickyHeader
+          activeTab={activeTab}
+          onTabClick={setActiveTab}
+          onComingSoon={handleComingSoon}
+        />
+      )}
+
+      {/* Main Content */}
+      <div className={`${!scrolled ? "pt-[142px]" : "pt-16"} pb-8`}>
+        {/* Hero Banner */}
+        <HeroBanner />
+
+        {/* Content */}
+        <div className="flex flex-col items-center gap-8 px-4 py-10">
+          <ContentSection />
+        </div>
       </div>
+
+      {/* Modals */}
+      <ComingSoonModal
+        isOpen={showComingSoon}
+        onClose={() => setShowComingSoon(false)}
+      />
+
+      <NavigationDrawer
+        isOpen={showDrawer}
+        onClose={() => setShowDrawer(false)}
+      />
     </div>
   );
 };
