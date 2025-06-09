@@ -1,17 +1,9 @@
 export function HeroBanner() {
   return (
     <div
-      className="flex h-[218px] flex-col justify-center items-center relative"
+      className="flex h-[218px] flex-col justify-center items-center relative bg-cover bg-center"
       style={{
-        background: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-                    repeating-linear-gradient(
-                      45deg,
-                      transparent,
-                      transparent 10px,
-                      rgba(255,255,255,0.03) 10px,
-                      rgba(255,255,255,0.03) 20px
-                    ),
-                    #1a1a1a`,
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/hero-bg.svg')`,
       }}
     >
       <h1 className="text-white text-center font-nunito text-[40px] font-black leading-[71px] capitalize">
