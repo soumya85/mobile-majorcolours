@@ -1,4 +1,5 @@
 import { X } from "lucide-react";
+import { useScroll } from "@/hooks/use-scroll";
 
 interface ComingSoonModalProps {
   isOpen: boolean;
@@ -6,15 +7,23 @@ interface ComingSoonModalProps {
 }
 
 export function ComingSoonModal({ isOpen, onClose }: ComingSoonModalProps) {
+  const { scrolled } = useScroll(50);
+
   if (!isOpen) return null;
 
+  // Position below header - sticky header is 64px (h-16), main header is 142px
+  const topPosition = scrolled ? "64px" : "142px";
+
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[9999]">
       {/* Backdrop */}
       <div className="absolute inset-0 bg-black/50" onClick={onClose} />
 
-      {/* Modal */}
-      <div className="relative w-[340px] h-[80px] border-2 border-gray-700 bg-[#020202] max-w-[calc(100vw-32px)]">
+      {/* Modal positioned below header */}
+      <div
+        className="absolute left-1/2 transform -translate-x-1/2 w-[340px] h-[80px] border-2 border-gray-700 bg-[#020202] max-w-[calc(100vw-32px)]"
+        style={{ top: topPosition }}
+      >
         {/* Close button */}
         <button
           onClick={onClose}
