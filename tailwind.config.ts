@@ -72,15 +72,8 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
         gray: {
-          '700': '#3F4447',
-          '600': '#B0B0B0',
-        },
-        'major': {
-          'black': '#000000',
-          'gray': '#3F4447',
-          'text-gray': '#B0B0B0',
-          'dark-gray': '#020202',
-        },
+          "700": "#3F4447",
+          "600": "#B0B0B0",
         },
       },
       borderRadius: {
