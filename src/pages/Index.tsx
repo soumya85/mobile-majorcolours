@@ -7,12 +7,14 @@ import { HeroBanner } from "@/components/HeroBanner";
 import { ContentSection } from "@/components/ContentSection";
 import { ComingSoonModal } from "@/components/ComingSoonModal";
 import { NavigationDrawer } from "@/components/NavigationDrawer";
+import MembershipLogin from "./MembershipLogin";
 
 const Index = () => {
   const { scrolled } = useScroll(50);
   const [activeTab, setActiveTab] = useState("LIFTING");
   const [showComingSoon, setShowComingSoon] = useState(false);
   const [showDrawer, setShowDrawer] = useState(false);
+  const [showMembershipLogin, setShowMembershipLogin] = useState(false);
 
   const handleTabClick = (tab: string) => {
     if (tab === "LIFTING") {
@@ -26,12 +28,28 @@ const Index = () => {
     setShowComingSoon(true);
   };
 
+  const handleUserClick = () => {
+    setShowMembershipLogin(true);
+  };
+
+  const handleBackFromLogin = () => {
+    setShowMembershipLogin(false);
+  };
+
+  // Show membership login if requested
+  if (showMembershipLogin) {
+    return <MembershipLogin onBack={handleBackFromLogin} />;
+  }
+
   return (
     <div className="min-h-screen bg-black font-nunito overflow-x-hidden max-w-[440px] mx-auto">
       {/* Header - only show when not scrolled */}
       {!scrolled && (
         <div className="fixed top-0 left-0 right-0 z-30 bg-black max-w-[440px] mx-auto">
-          <Header onMenuClick={() => setShowDrawer(true)} />
+          <Header
+            onMenuClick={() => setShowDrawer(true)}
+            onUserClick={handleUserClick}
+          />
           <CategoryTabs activeTab={activeTab} onTabClick={handleTabClick} />
         </div>
       )}
