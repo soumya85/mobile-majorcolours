@@ -18,7 +18,9 @@ export function CategoryTabs({ activeTab, onTabClick }: CategoryTabsProps) {
               : "text-gray-600 font-medium hover:text-gray-400"
           }`}
         >
-          {tab}
+          <span className={activeTab === tab ? "border-b-2 border-white" : ""}>
+            {tab}
+          </span>
           {/* Active tab border bottom indicator */}
           {activeTab === tab && (
             <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-white z-10 shadow-sm" />
