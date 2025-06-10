@@ -48,7 +48,7 @@ const MembershipLogin = ({ onBack }: MembershipLoginProps) => {
             <Button
               onClick={handleNext}
               disabled={!emailOrPhone.trim()}
-              className="w-full h-[50px] bg-white text-black text-base font-bold leading-6 uppercase rounded-[4px] border-0 hover:bg-gray-100 disabled:bg-gray-600 disabled:text-gray-400 font-nunito tracking-normal"
+              className="w-full h-[50px] bg-white text-black text-base font-bold leading-6 uppercase rounded-[4px] border-0 hover:bg-gray-100 disabled:bg-gray-400 disabled:text-white font-nunito tracking-normal"
               style={{
                 fontFamily:
                   "Nunito Sans, -apple-system, Roboto, Helvetica, sans-serif",
