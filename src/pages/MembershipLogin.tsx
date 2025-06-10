@@ -27,7 +27,7 @@ const MembershipLogin = ({ onBack }: MembershipLoginProps) => {
         <div className="flex flex-col items-center justify-center flex-1">
           <div className="w-full max-w-[405px]">
             {/* Input Field */}
-            <div className="mb-8">
+            <div className="mb-5">
               <input
                 type="text"
                 value={emailOrPhone}
