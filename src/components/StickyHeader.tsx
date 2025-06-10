@@ -47,25 +47,23 @@ export function StickyHeader({
     <div className="fixed top-0 left-0 right-0 z-40 bg-black border-b border-gray-700">
       {/* Main sticky header - show different layout based on expanded state */}
       {showTabSelector ? (
-        // Expanded tab selector view - show LIFTING > MARATHON CRICKET FOOTBALL in one line
-        <div className="flex w-full max-w-[440px] mx-auto px-4 py-4 items-center h-16 overflow-x-auto gap-6">
-          <button
-            onClick={handleTabSelectorClick}
-            className="flex items-center gap-3 text-white hover:opacity-80 transition-opacity min-w-fit"
-          >
-            <span className="font-nunito text-base font-bold leading-6 uppercase">
-              {activeTab}
-            </span>
-            <ChevronRight size={12} className="mt-0.5" />
-          </button>
-
-          {tabs.map((tab) => (
+        // Expanded tab selector view - show all tabs with active border
+        <div className="flex h-16 items-center border-b border-gray-700 bg-black overflow-x-auto scrollbar-hide w-full max-w-[440px] mx-auto">
+          {allTabs.map((tab) => (
             <button
               key={tab}
               onClick={() => handleTabSelect(tab)}
-              className="min-w-fit whitespace-nowrap font-nunito text-base font-medium leading-6 uppercase text-gray-600 hover:text-gray-400 transition-colors"
+              className={`relative flex items-center justify-center px-5 py-4 min-w-fit whitespace-nowrap font-nunito text-[18px] leading-6 uppercase transition-all duration-200 ${
+                activeTab === tab
+                  ? "text-white font-bold"
+                  : "text-gray-600 font-medium hover:text-gray-400"
+              }`}
             >
               {tab}
+              {/* Active tab border bottom indicator */}
+              {activeTab === tab && (
+                <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-white z-10 shadow-sm" />
+              )}
             </button>
           ))}
         </div>
