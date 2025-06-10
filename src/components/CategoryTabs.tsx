@@ -21,7 +21,7 @@ export function CategoryTabs({ activeTab, onTabClick }: CategoryTabsProps) {
           {tab}
           {/* Active tab border bottom indicator */}
           {activeTab === tab && (
-            <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-white" />
+            <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-white z-10 shadow-sm" />
           )}
         </button>
       ))}
