@@ -9,6 +9,7 @@ interface StickyHeaderProps {
 }
 
 const tabs = ["MARATHON", "CRICKET", "FOOTBALL", "BASKETBALL"];
+const allTabs = ["LIFTING", "MARATHON", "CRICKET", "FOOTBALL", "BASKETBALL"];
 
 export function StickyHeader({
   activeTab,
